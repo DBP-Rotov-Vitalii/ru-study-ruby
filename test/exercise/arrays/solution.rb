@@ -2,14 +2,11 @@ module Exercise
   module Arrays
     class << self
       def replace(array)
-        max_element = array.max
-        array.map! { |el| el.positive? ? max_element : el }
-        array
+        array.map { |el| el.positive? ? array.max : el }
       end
 
       def search(array, query)
-        result = array.bsearch_index { |el| query <=> el }
-        result || -1
+        array.bsearch_index { |el| query <=> el } || -1
       end
     end
   end
