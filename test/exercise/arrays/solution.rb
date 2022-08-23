@@ -8,7 +8,9 @@ module Exercise
       end
 
       def search(_array, _query)
-        0
+        result = _array.bsearch_index {|el| _query <=> el }
+        result = -1 if result.nil?
+        result
       end
     end
   end
