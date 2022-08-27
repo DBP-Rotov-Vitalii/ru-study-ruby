@@ -11,8 +11,8 @@ module Exercise
         (interest_array.reduce(0) { |sum, el| sum + el['rating_kinopoisk'].to_f }) / interest_array.count
       end
 
-      def chars_count(_films, _threshold)
-        0
+      def chars_count(films, threshold)
+        films.select { |el| el['rating_kinopoisk'].to_f >= threshold }.reduce(0) { |sum, el| sum + el['name'].count('и') }
       end
     end
   end
