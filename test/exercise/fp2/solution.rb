@@ -30,7 +30,17 @@ module Exercise
       end
 
       # Написать свою функцию my_reduce
-      def my_reduce; end
+      def my_reduce(acc = nil)
+        if acc.nil?
+          acc = self[0]
+          skip = true
+        end
+        my_each do |element|
+          acc = yield(acc, element) unless skip
+          skip = false
+        end
+        acc
+      end
     end
   end
 end
