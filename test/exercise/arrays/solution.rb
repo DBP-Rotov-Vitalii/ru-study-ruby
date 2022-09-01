@@ -13,11 +13,7 @@ module Exercise
         half = (first + last) / 2
         return half if array[half] == query
 
-        if array[half] < query
-          first = half + 1
-        elsif array[half] > query
-          last = half
-        end
+        array[half] < query ? first = half + 1 : last = half
         bsearch_my(array, query, first, last)
       end
 
