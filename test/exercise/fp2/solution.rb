@@ -32,16 +32,11 @@ module Exercise
       end
 
       # Написать свою функцию my_reduce
-      def my_reduce(acc = nil)
-        if acc.nil?
-          acc = self[0]
-          skip = true
-        end
-        my_each do |element|
-          acc = yield(acc, element) unless skip
-          skip = false
-        end
-        acc
+      def my_reduce(acc = nil, element = 0, &block)
+        return acc if element >= length
+
+        acc = acc.nil? ? self[0] : block.call(acc, self[element])
+        my_reduce(acc, element + 1, &block)
       end
     end
   end
