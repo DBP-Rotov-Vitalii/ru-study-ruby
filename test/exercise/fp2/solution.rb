@@ -5,10 +5,12 @@ module Exercise
       # Использовать свои написанные функции для реализации следующих - можно.
 
       # Написать свою функцию my_each
-      def my_each
-        for element in self
-          yield element
-        end
+      def my_each(element = 0, &block)
+        return self if element >= length
+
+        yield self[element]
+
+        my_each(element + 1, &block)
       end
 
       # Написать свою функцию my_map
