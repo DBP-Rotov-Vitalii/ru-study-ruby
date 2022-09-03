@@ -14,12 +14,8 @@ module Exercise
       end
 
       # Написать свою функцию my_map
-      def my_map
-        result = MyArray.new
-        my_each do |element|
-          result << yield(element)
-        end
-        result
+      def my_map(&block)
+        my_reduce(MyArray.new) { |acc, element| acc << block.call(element) }
       end
 
       # Написать свою функцию my_compact
